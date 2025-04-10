@@ -1,0 +1,25 @@
+.buttonIcon {
+  position: relative;  
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonIcon span:after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.buttonIcon.buttonIconSave {
+  margin-right: 70px
+}
+.buttonIcon.buttonIconSave span:after {
+  right: -60px;
+  content: "Speichern";
+}
+
+
