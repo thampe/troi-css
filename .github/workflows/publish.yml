@@ -27,12 +27,17 @@ jobs:
           mkdir -p dist/icons
           cp icons/*.png dist/icons/
           
-      - name: Publish to Chrome Web Store
-        uses: marvinpinto/action-upload-chrome-extension@v1
+      - name: Create ZIP file
+        run: |
+          cd dist
+          zip -r ../extension.zip *
+          cd ..
+          
+      - name: Upload to Chrome Web Store
+        uses: mnao305/chrome-extension-upload@v4.0.1
         with:
+          file-path: extension.zip
           extension-id: ${{ secrets.EXTENSION_ID }}
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
-          refresh-token: ${{ secrets.REFRESH_TOKEN }}
-          file-path: ./dist
-          publish: true 
+          refresh-token: ${{ secrets.REFRESH_TOKEN }} 
