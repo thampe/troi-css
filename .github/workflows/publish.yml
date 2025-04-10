@@ -1,0 +1,38 @@
+name: Publish to Chrome Web Store
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build extension
+        run: |
+          mkdir -p dist
+          cp manifest.json dist/
+          cp troi.css dist/
+          mkdir -p dist/icons
+          cp icons/*.png dist/icons/
+          
+      - name: Publish to Chrome Web Store
+        uses: marvinpinto/action-upload-chrome-extension@v1
+        with:
+          extension-id: ${{ secrets.EXTENSION_ID }}
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          file-path: ./dist
+          publish: true 

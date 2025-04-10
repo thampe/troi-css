@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "TROI Improved",
+  "version": "1.0",
+  "description": "Enhances the TROI Software interface by adding clear German button labels and improving layout",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": [
+    "*://*.troi.software/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.troi.software/*"],
+      "css": ["troi.css"]
+    }
+  ]
+} 

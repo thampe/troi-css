@@ -1,0 +1,24 @@
+{
+  "name": "troi-improved",
+  "version": "1.0.0",
+  "description": "Usability improvements for TROI",
+  "scripts": {
+    "build": "mkdir -p dist && cp manifest.json dist/ && cp troi.css dist/ && mkdir -p dist/icons && cp icons/*.png dist/icons/",
+    "version": "npm run build && git add dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/troi-css.git"
+  },
+  "keywords": [
+    "chrome-extension",
+    "css",
+    "troi"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/troi-css/issues"
+  },
+  "homepage": "https://github.com/yourusername/troi-css#readme"
+} 
